@@ -1,6 +1,6 @@
 Code for paper "Extended Bayesian endemic-epidemic models
 for incorporating mobility data into COVID-19 
-forecasting" by Dirk Douwes-Schultz, Mila Sun, Alexandra M. Schmidt and Erica Moodie.
+forecasting" by Dirk Douwes-Schultz, Shuo Sun, Alexandra M. Schmidt and Erica Moodie.
 
 Hennepin_data.RData - data for Hennepin County
 
