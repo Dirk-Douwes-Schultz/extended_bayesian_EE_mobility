@@ -10,7 +10,7 @@ Miami_data.RData - data for Miami County
 
 NY_data.RData - data for New York County 
 
-final_model_king_county.R - code for fitting final model (underlined in Table 1) for King County.
+final_model_king_county.R - code for fitting the final model (underlined in Table 1) for King County.
 Note that the final model for the other counties can be run by slightly modifying this code.
 
 
