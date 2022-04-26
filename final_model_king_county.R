@@ -43,12 +43,12 @@ summary(cb1.ca)
 mT <- 320
 K <- 7
 
-#JAGS code
+#cases and some covariates
 cases <- king_cases_home$cases_daily[minpos:nrow(king_cases_home)]
 wkday <- king_cases_home$wkday[minpos:nrow(king_cases_home)]
 stay_home_rate <- king_cases_home$StayAtHomeRate[minpos:nrow(king_cases_home)]
 
-#need a weekday matrix
+#need a weekday matrix, monday is the baseline
 wkdaym <- matrix(ncol=6,nrow=length(wkday),data=rep(0,6*length(wkday)))
 for(i in 1:length(wkday)){
   if(wkday[i]!=1){
@@ -377,7 +377,7 @@ points(1:7,medw[1:7],col="red")
 add.error.bars(X = 1:7,upper = upperw[1:7],lower = lowerw[1:7],width = .5,col="red")
 #legend(40,25,legend = c("Posterior Predictive Median","Posterior Predictive 95% CI","Observed"),lty=c(1,2,NA),col=c("red","red","black"),pch=c(NA,NA,1))
 
-#plot of reproduction number
+#plot of autoregressive rate
 par(mfrow=c(1,1))
 medr = apply(samps[,grepl( "phi" , names( samps ) ) ],MARGIN = 2,median)
 upperr= apply(samps[,grepl( "phi" , names( samps ) ) ],MARGIN = 2,function(x) quantile(x,probs=c(.975),na.rm=TRUE))
@@ -392,7 +392,7 @@ par(usr=c(-3,length(cases)+3, 0,max(upperr)+mean(medr,na.rm = TRUE))); #Set the 
 axis(1); #Draw the horizontal axis.
 axis(2,las=1); #Draw the vertical axis.
 box(bty=letters[12], lwd=2); #Draw a frame around the plot.
-title(main="Reproduction number phi[t]",cex.main=2,font.main=1,xlab = "Day since start of epidemic",ylab="phi"); #Add a title
+title(main="Autoregressive rate phi[t]",cex.main=2,font.main=1,xlab = "Day since start of epidemic",ylab="phi"); #Add a title
 lines(8:(mT),medr[8:mT],col="red")
 lines(8:(mT),lowerr[8:mT],col="red",lty=2)
 lines(8:(mT),upperr[8:mT],col="red",lty=2)
